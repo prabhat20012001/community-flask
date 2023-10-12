@@ -1,6 +1,202 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Page Title</title>
+
+  <!-- Add the Swiper CSS link here -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+
+</head>
 {% extends '/auth/layout.html' %}
 {% block body %}
+<body>
 
-<h1>Login</h1>
+
+  
+
+
+
+
+<main class="grid grid-cols-1 md:flex">
+  <div class=" w-full md:w-1/2 bg-teal-50 h-full py-10 text-center px-16">
+
+    <div class="swiper mySwiper" data-swiper-autoplay="1000">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="{{url_for('static', filename='images/community-seven-people-2x.png')}}" class="mx-auto" style="display: block;">
+          <h2 class="text-4xl font-bold text-teal-500 text-center py-6">Join Wleness Community</h2>
+          <p class="text-lg mb-4">It's a reminder that your struggles don't define you, and that there's strength in connecting with those who genuinely care about your mental health.</p>
+  
+        </div>
+        <div class="swiper-slide">
+  
+          <img src="{{url_for('static', filename='images/community-three-people.png')}}" class="mx-auto" style="display: block;">
+          <h2 class="text-4xl font-bold text-teal-500 text-center py-6">Join Wleness Community</h2>
+          <p class="text-lg mb-7">In these communities, you can openly share, learn, and grow with others who have faced similar challenges. The support, empathy, and shared wisdom can reduce the stigma surrounding mental health, offer relief, and inspire hope.</p>
+  
+        </div>
+        <div class="swiper-slide">
+  
+          <img src="{{url_for('static', filename='images/community-eight-people.png')}}" class="mx-auto" style="display: block;">
+          <h2 class="text-4xl font-bold text-teal-500 text-center py-4">Join Wleness Community</h2>
+          <p class="text-lg ">Joining a mental health community is a powerful step towards well-being. It provides a safe and understanding space where you're not alone in your journey.</p>
+  
+        </div>
+       
+      </div>
+      <div class="swiper-pagination "></div>
+    </div>
+
+   
+   
+</div>
+
+
+    <div class="flex items-center justify-center md:w-1/2 md:px-4">
+        <div class=" bg-white p-6  sm:w-[400px] lg:py-10 text-center">
+      <img src="{{url_for('static', filename='images/logo2x.png')}}" class="mx-auto py-4">
+
+          <div class="mb-4 grid grid-cols-2 justify-between gap-4">
+            <button
+              onClick={handleGoogleSignIn}
+              class="flex items-center rounded-lg border-2 border-teal-300 px-5 py-2"
+            >
+              <img src="{{url_for('static', filename='images/google.png')}}" alt="" class="mr-1 w-8" >
+              <span class="font-medium">Google</span>
+            </button>
+            <button
+              onClick={handleFacebookSignIn}
+              class="flex items-center rounded-lg border-2 border-teal-300 px-5 py-2"
+            >
+            <img src="{{url_for('static', filename='images/facebook.png')}}"alt="" class="mr-1 w-8" >
+              <span class="font-medium">Facebook</span>
+            </button>
+          </div>
+  
+          <div class="my-4 flex items-center justify-center gap-3">
+            <span class="h-[2px] w-36 bg-slate-200"></span>
+            <span class="text-sm font-medium">OR</span>
+            <span class="h-[2px] w-36 bg-slate-200"></span>
+          </div>
+  
+          <form onSubmit={handleSubmit} class="mb-8 px-4">
+            <!-- {successMessage.status == "" ? (
+              location.state &&
+              location.state.successMessage && (
+                <p class="mb-3 text-center font-semibold text-red-500">
+                  {location.state.successMessage}
+                </p>
+              )
+            ) : (
+              <p
+                class={`mb-3 text-center font-semibold ${
+                  successMessage.status == "success"
+                    ? " text-green-500 "
+                    : " text-red-500 "
+                }`}
+              >
+                {successMessage.message}
+              </p>
+            )} -->
+  
+            <label htmlFor="phone" class="mb-5 block">
+              <input
+                type="tel"
+                id="phone"
+                maxLength={10}
+                name="phone"
+                placeholder="Email or mobile number"
+                class=" mb-3 block w-full border-b-2  border-slate-200 py-1.5 text-sm outline-none md:py-2.5 md:text-base"
+                onChange={handleChange}
+              />
+            </label>
+            <label for="password" class="mb-5 block relative">
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Password"
+                class="mb-3 block w-full border-b-2 border-slate-200 py-1.5 text-sm outline-none md:py-2.5 md:text-base"
+                value={formInfo.password}
+                onChange={handleChange}
+              />
+              <span id="password-toggle" class="absolute right-0 top-1/2 transform -translate-y-1/2 cursor-pointer">
+                <i class="far fa-eye"></i> 
+              </span>
+            </label>
+  
+            <div class="text-right py-4">
+              <Link
+                to="/forgot-password"
+                class="mb-6 inline-block text-sm font-medium text-primary-400"
+              >
+              <span class="text-teal-500">Forgot Password</span> 
+              </Link>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="bg-teal-500 rounded-xl  text-white  !w-fit !px-28 !py-4">
+                LOGIN
+              </button>
+            </div>
+          </form>
+  
+          <div class="md:px-8">
+            <p class="text-center font-medium">
+              <span>Don't have an account yet. </span>
+              <Link class="font-semibold text-primary-400" to="/signup">
+                <span class="text-teal-500">Sign Up</span>
+              </Link>
+            </p>
+            <!-- <p class="text-center font-medium">
+              <span>Login as an Expert. </span>
+              <Link
+                class="font-semibold text-primary-400"
+                to="/experts-login"
+              >
+               <span class="text-teal-500">Login In</span> 
+              </Link>
+            </p> -->
+          </div>
+        </div>
+      </div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script>
+  var swiper = new Swiper(".mySwiper", {
+    pagination: {
+      el: ".swiper-pagination",
+    },
+  });
+  const mySwiper = new Swiper('.mySwiper', {
+    slidesPerView: 1,
+    spaceBetween: 10,
+    autoplay: {
+      delay: 1000, 
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+
+  });
+  const passwordInput = document.getElementById('password');
+  const passwordToggle = document.getElementById('password-toggle');
+
+  passwordToggle.addEventListener('click', () => {
+    if (passwordInput.type === 'password') {
+      passwordInput.type = 'text';
+    } else {
+      passwordInput.type = 'password';
+    }
+  });
+</script>
+
+</body>
 
 {% endblock %}
